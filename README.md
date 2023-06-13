@@ -26,5 +26,14 @@ All HTTP/s requests go through the phoenix application endpoint. The pipeline (R
 Each layer represents a different purpose:
 - Endpoint -> common and paths that all requests go through. 
 - Router -> dispatch verb/path to controllers. May also restrict / scope certain features/functionalities. 
-- Controller -> Retrieve request information, communicate with business logic and prepare data for presentation layer.
+- Controller -> Retrieve request information, communicate with business logic and prepare data for presentation layer. (handle actions)
 - View -> Handles structured data from controller and converts to presentation to be shows to users.
+
+
+## Plug Library
+
+Plug is a specification for composable modules in between web applications, acting as an abstraction layer for different web servers connection adapters. Basically,
+it is a way to unify the connections we operate on. 
+They are divided into two types:
+- function -> Need to receive %Plug.conn{} as first parameter, options as second parameter and return one %Plug.conn{} as well. To use them, pass them as an elixir atom. 
+- modules 
