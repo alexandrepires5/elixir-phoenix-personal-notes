@@ -19,4 +19,12 @@ The default structure looks similar to this:
 ## Architectural Design and Patterns
 MVC based (similar as Ruby on Rails, Django, etc etc), but organized in a pipeline. Every module, behaviour and business logic is abstracted into "plug" components.
 
-The "lib/MyApp" directory hold the "M" part. "lib/MyApp_web" holds the "V" and "C" part.
+The "lib/MyApp" directory hold the "M" part. "lib/MyApp_web" holds the "V" and "C" part. 
+
+All HTTP/s requests go through the phoenix application endpoint. The pipeline (Request Life Cycle is the other, correct name) calls several "plugs" from the plug library (this is a specification and library of how phoenix builds websites). 
+
+Each layer represents a different purpose:
+- Endpoint -> common and paths that all requests go through. 
+- Router -> dispatch verb/path to controllers. May also restrict / scope certain features/functionalities. 
+- Controller -> Retrieve request information, communicate with business logic and prepare data for presentation layer.
+- View -> Handles structured data from controller and converts to presentation to be shows to users.
